@@ -216,22 +216,4 @@ class Hero extends Entity{
     saveScore(){
         text(`Score: ${score}`, 4 * width / 5, 30);
     }
-    
-    constructor(x, y, w, h) {
-        super(x, y, w, h);
-        this.life = 100;
-        this.score = 0;
-    }
-
-    increaseScore(){
-
-    }
-
-    calculateLife(){
-
-    }
-
-    saveScore(){
-        
-    }
 }
