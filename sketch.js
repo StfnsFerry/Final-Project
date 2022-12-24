@@ -12,6 +12,13 @@ let monster;
 let lvl;
 let map;
 
+function preload(){
+    bulletImage = loadImage('img/asteroids_peluru.png');
+    shipImage = loadImage('img/asteroids_kapal1.png');
+    particleImage = loadImage('img/asteroids_particle.png');
+    starImage = loadImage('img/star.png');
+}
+
 function setup(){
     createCanvas(500,740);
     map = new Map(500,740)
