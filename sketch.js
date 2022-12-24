@@ -104,12 +104,40 @@ function asteroidHit(asteroid, bullet) {
     asteroid.remove();
 }
 
+function reset() {
+    score = 0;
+    life = 3;
+    ship = createSprite(width / 2, height - 30);
+    ship.maxSpeed = 60;
+    ship.friction = 0.7;
+    ship.rotation = 270;
+    ship.setCollider('circle', 0, 0, 20);
+    ship.addAnimation('thrust', 'img/asteroids_kapal2.png', 'img/asteroids_kapal7.png');
+    asteroids.removeSprites();
+    
+    for (var i = 0; i < 8; i++) {
+        var ang = random(360);
+        var px = width / 2 + 0.4 * width * cos(radians(ang));
+        var py = 0.1 * height * sin(radians(ang));
+        monster.moveRandom(3, px, py);
+    }
+    
+    for (var i = 0; i < 30; i++) {
+        var ang = random(360);
+        var px = width * cos(radians(ang));
+        var py = height * sin(radians(ang));
+        var star = createSprite(px, py);
+        star.draw = function () { var size = random(2, 5); fill(255, 255, 0); ellipse(0, 0, size, size) }
+        star.setSpeed(1, 90);
+        star.rotationSpeed = 0.5;
+    }
+}
+
 function removeAll() {
     for (i = 0; i < allSprites.length;) {
         allSprites[i].remove();
     }
 }
-
 
 class Map{
   
