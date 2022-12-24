@@ -82,21 +82,6 @@ function draw(){
     drawSprites();
 }
 
-function endScreen(str, color) {
-    background(0);
-    textSize(width / 10);
-    
-    if (color === 0) fill(250, 0, 0);
-    
-    else fill(0, 250, 0);
-    
-    text(str, width / 2, height / 3);
-    textSize(width / 12);
-    text(`Score: ${score}`, width / 2, height / 2);
-    text("Tap to restart", width / 2, 0.7 * height);
-    removeAll()
-}
-
 function touchMoved() {
     ship.attractionPoint(20, mouseX, height - 30);
     var bullet = createSprite(ship.position.x, ship.position.y);
@@ -138,6 +123,26 @@ function asteroidHit(asteroid, bullet) {
     hero.increaseScore();
 
     bullet.remove();
+    asteroid.remove();
+}
+
+function endScreen(str, color) {
+    background(0);
+    textSize(width / 10);
+    
+    if (color === 0) fill(250, 0, 0);
+    
+    else fill(0, 250, 0);
+    
+    text(str, width / 2, height / 3);
+    textSize(width / 12);
+    text(`Score: ${score}`, width / 2, height / 2);
+    text("Tap to restart", width / 2, 0.7 * height);
+    removeAll()
+}
+
+function decLife(ship, asteroid) {
+    life--;
     asteroid.remove();
 }
 
