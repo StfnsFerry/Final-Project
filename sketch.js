@@ -75,6 +75,29 @@ function draw(){
     drawSprites();
 }
 
+function asteroidHit(asteroid, bullet) {
+    var newType = asteroid.type - 1;
+
+    if (newType > 0) {
+        monster.moveRandom(newType, asteroid.position.x, asteroid.position.y);
+        monster.moveRandom(newType, asteroid.position.x, asteroid.position.y);
+    }
+
+    for (var i = 0; i < 100; i++) {
+        var p = createSprite(bullet.position.x, bullet.position.y);
+        p.addImage(particleImage);
+        p.setSpeed(random(20, 100), random(360));
+        p.friction = 0.95;
+        p.life = 2;
+    }
+    
+    hero.increaseScore();
+
+    bullet.remove();
+    asteroid.remove();
+}
+
+
 class Map{
     constructor(width, height){
         this.width = width;
@@ -138,6 +161,8 @@ class Entity{
         ship.addSpeed(20, 90);
     }
 }
+
+
 
 class Monster extends Entity{
     constructor(x, y, h, w) {
