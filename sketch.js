@@ -65,3 +65,21 @@ class Entity{
 
     }
 }
+
+class Monster extends Entity{
+    constructor(x, y, h, w) {
+        super(x, y, h, w);
+        this.life = 1;
+        this.color = [0,0,0];
+        this.effect = 0;
+        this.type = 0;
+    }
+
+    moveRandom(){
+
+    }
+
+    saveScore(){
+
+    }
+}
