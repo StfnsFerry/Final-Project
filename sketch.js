@@ -1,5 +1,14 @@
 function setup(){
-
+createCanvas(500,740);
+    map = new Map(500,740)
+    lvl = new Level(3)
+    hero = new Hero();
+    monster = new Monster();
+    preload();
+    
+    asteroids = new Group();
+    bullets = new Group();
+    reset();
 }
 
 function draw(){
