@@ -1,3 +1,17 @@
+var bullets;
+var asteroids;
+var ship;
+var shipImage, bulletImage, particleImage;
+var MARGIN = 40;
+var score = 0;
+var life = 3;
+var level = 1;
+
+let hero;
+let monster;
+let lvl;
+let map;
+
 function setup(){
 createCanvas(500,740);
     map = new Map(500,740)
