@@ -50,6 +50,28 @@ function draw(){
         if (s.position.y > height + MARGIN) s.position.y = -MARGIN;
     }
     
+    function touchMoved() {
+    ship.attractionPoint(20, mouseX, height - 30);
+    var bullet = createSprite(ship.position.x, ship.position.y);
+    bullet.addImage(bulletImage);
+    bullet.setSpeed(20 + ship.getSpeed() / 2, ship.rotation);
+    bullet.life = 20;
+    bullets.add(bullet);
+}
+
+function touchStarted() {
+    if (life <= 0 || asteroids.length === 0) {
+        reset();
+}
+    
+    ship.attractionPoint(100, mouseX, height - 30);
+    var bullet = createSprite(ship.position.x, ship.position.y);
+    bullet.addImage(bulletImage);
+    bullet.setSpeed(20 + ship.getSpeed() / 2, ship.rotation);
+    bullet.life = 20;
+    bullets.add(bullet);
+}
+    
     asteroids.overlap(bullets, asteroidHit);
     ship.overlap(asteroids, decLife);
     
