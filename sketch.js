@@ -39,6 +39,15 @@ function draw(){
     textSize(16);
     text('Controls: Arrow Keys + X', width / 2, 20);
     hero.saveScore();
+    if(score == 0){
+        level = 1;
+    }
+    if(score == 20){
+        level = 2;
+    }
+    if(score == 40){
+        level = 3;
+    }
     text(`Level: ${level}`, width / 5, 50);
     hero.calculateLife();
     
