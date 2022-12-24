@@ -3,7 +3,53 @@ function setup(){
 }
 
 function draw(){
-
+    background(0);
+    fill(255);
+    textAlign(CENTER);
+    textSize(16);
+    text('Controls: Arrow Keys + X', width / 2, 20);
+    hero.saveScore();
+    text(`Level: ${level}`, width / 5, 50);
+    hero.calculateLife();
+    
+    for (var i = 0; i < allSprites.length; i++) {
+        var s = allSprites[i];
+        if (s.position.x < -MARGIN) s.position.x = width + MARGIN;
+        if (s.position.x > width + MARGIN) s.position.x = -MARGIN;
+        if (s.position.y < -MARGIN) s.position.y = height + MARGIN;
+        if (s.position.y > height + MARGIN) s.position.y = -MARGIN;
+    }
+    
+    asteroids.overlap(bullets, asteroidHit);
+    ship.overlap(asteroids, decLife);
+    
+    if (keyDown(LEFT_ARROW))
+        hero.moveLeft();
+    
+    if (keyDown(RIGHT_ARROW))
+        hero.moveRight();
+    
+    if (keyDown(UP_ARROW))
+        hero.moveUp();
+    
+    if (keyDown(DOWN_ARROW))
+        hero.moveDown();
+    
+    if (keyWentDown('x')) {
+        hero.attack();
+    }
+    
+    if (life <= 0) {
+        for (var j = 0; j < allSprites.length; j++) {
+        var t = allSprites[j];
+        t.setSpeed(0);
+        }
+        endScreen("GAME OVER", 0)
+    }
+    else if (asteroids.length === 0) {
+        endScreen("YOU WIN", 1)
+    }
+    drawSprites();
 }
 
 class Map{
@@ -45,24 +91,28 @@ class Entity{
         this.width = h;
     }
 
-    attack(){
-
+    attack() {
+        var bullet = createSprite(ship.position.x, ship.position.y);
+        bullet.addImage(bulletImage);
+        bullet.setSpeed(20 + ship.getSpeed() / 2, ship.rotation);
+        bullet.life = 20;
+        bullets.add(bullet);
+    }
+  
+    moveLeft(){
+        ship.addSpeed(20, 180);
     }
 
     moveRight(){
-
-    }
-
-    moveLeft(){
-
-    }
-
-    moveDown(){
-
+        ship.addSpeed(20, 0);
     }
 
     moveUp(){
+        ship.addSpeed(20, -90);
+    }
 
+    moveDown(){
+        ship.addSpeed(20, 90);
     }
 }
 
