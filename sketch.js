@@ -37,3 +37,31 @@ class Level{
     }
 }
 
+class Entity{
+    constructor(x, y, w, h){
+        this.x = x;
+        this.y = y;
+        this.height = w;
+        this.width = h;
+    }
+
+    attack(){
+
+    }
+
+    moveRight(){
+
+    }
+
+    moveLeft(){
+
+    }
+
+    moveDown(){
+
+    }
+
+    moveUp(){
+
+    }
+}
