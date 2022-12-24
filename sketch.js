@@ -97,6 +97,12 @@ function asteroidHit(asteroid, bullet) {
     asteroid.remove();
 }
 
+function removeAll() {
+    for (i = 0; i < allSprites.length;) {
+        allSprites[i].remove();
+    }
+}
+
 
 class Map{
     constructor(width, height){
