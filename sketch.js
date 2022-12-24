@@ -13,7 +13,7 @@ let lvl;
 let map;
 
 function setup(){
-createCanvas(500,740);
+    createCanvas(500,740);
     map = new Map(500,740)
     lvl = new Level(3)
     hero = new Hero();
