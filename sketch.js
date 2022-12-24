@@ -198,6 +198,25 @@ class Monster extends Entity{
 }
 
 class Hero extends Entity{
+    constructor(x, y) {
+        super(x,y);
+        this.life = 3;
+        this.score = 0;
+    }
+    
+    increaseScore(){
+        score++;
+    }
+
+    calculateLife(){
+        if (life < 2) fill(255, 0, 0)
+        text(`Lives: ${life}`, width / 5, 30);
+    }
+
+    saveScore(){
+        text(`Score: ${score}`, 4 * width / 5, 30);
+    }
+    
     constructor(x, y, w, h) {
         super(x, y, w, h);
         this.life = 100;
