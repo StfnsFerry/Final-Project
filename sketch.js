@@ -165,20 +165,35 @@ class Entity{
 
 
 class Monster extends Entity{
-    constructor(x, y, h, w) {
-        super(x, y, h, w);
-        this.life = 1;
+    constructor(type,x, y) {
+        super();
         this.color = [0,0,0];
-        this.effect = 0;
-        this.type = 0;
+        this.type;
+        this.effect;
+        this.life;
     }
 
-    moveRandom(){
+    moveRandom(type,x,y){
+        var a = createSprite(x, y);
+        var img = loadImage('img/asteroid' + floor(random(0, 3)) + '.png');
+        a.addImage(img);
+        a.setSpeed(5 - (type / 2), random(85, 95));
+        a.rotationSpeed = 0.5;
+        a.type = type;
 
+        if (type == 2)
+        a.scale = 0.6;
+        if (type == 1)
+        a.scale = 0.3;
+
+        a.mass = 2 + a.scale;
+        a.setCollider('circle', 0, 0, 50);
+        asteroids.add(a);
+        return a;
     }
-
+    
     saveScore(){
-
+        text(`Score: ${score}`, 4 * width / 5, 30);
     }
 }
 
